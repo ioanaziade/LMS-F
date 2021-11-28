@@ -1,8 +1,9 @@
 function [h, Error]=LeastMeanSquares(Noise,MusicNoise,mu,N)
 L=length(Noise);
-phi(1:N,1)=0;
 h(1:N,L+1)=0;
 x_pad=[zeros(N-1,1);Noise];
+Error=zeros(L,1);
+NewNoise=zeros(L,1);
 for i =1:L
     phi=x_pad(i+(N-1):-1:i);
     NewNoise(i)=phi'*h(:,i);
